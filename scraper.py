@@ -63,8 +63,6 @@ with open('deck_data.csv', 'a', newline='') as deck_data:
                     page_scraped = True
                     break      
 
-                new_row = []
-
                 # to find
                 title = soup.title.text
                 try:

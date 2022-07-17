@@ -5,7 +5,7 @@ import pandas as pd
 unclean_data_path = 'deck_data.csv'
 clean_data_path = 'deck_data_clean.csv'
 
-df = pd.read_csv(unclean_data_path, low_memory=False)
+df = pd.read_csv(unclean_data_path, low_memory=False, parse_dates=['LastUpdated'])
 df = df.drop_duplicates()
 
 # removing '- Hearthstone Decks' from ends of titles
@@ -19,6 +19,8 @@ def drop_last_split(deck_title):
     else:
         return deck_title
 
+#if you accidentally ran the header multiple times
+df = df.loc[df['CardCosts'] != 'CardCosts']
 
 df['Title'] = df['Title'].apply(drop_last_split)
 
